@@ -1,0 +1,3963 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Words Trainer Pro</title>
+    <style>
+        :root {
+            --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+            --radius-xs: 5px;
+            --radius-sm: 7px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --radius-xl: 18px;
+
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.12);
+            --shadow-lg: 0 24px 70px rgba(15, 23, 42, 0.18);
+
+            --transition-fast: 130ms ease;
+            --transition-base: 180ms ease;
+        }
+
+        :root[data-theme="light"] {
+            color-scheme: light;
+
+            --page: #f4f6f8;
+            --page-gradient: radial-gradient(circle at 14% -8%, rgba(98, 117, 139, 0.14), transparent 34%);
+            --surface: #ffffff;
+            --surface-raised: #ffffff;
+            --surface-muted: #f8fafc;
+            --surface-strong: #eef2f6;
+            --surface-inverted: #111827;
+
+            --text: #111827;
+            --text-soft: #334155;
+            --muted: #64748b;
+            --muted-strong: #475569;
+
+            --border: rgba(15, 23, 42, 0.11);
+            --border-strong: rgba(15, 23, 42, 0.18);
+            --field: #ffffff;
+            --field-hover: #f8fafc;
+
+            --accent: #3f5f8b;
+            --accent-strong: #243f67;
+            --accent-soft: rgba(63, 95, 139, 0.1);
+            --accent-border: rgba(63, 95, 139, 0.28);
+
+            --success: #15803d;
+            --success-soft: rgba(21, 128, 61, 0.1);
+            --success-border: rgba(21, 128, 61, 0.24);
+
+            --danger: #b42318;
+            --danger-soft: rgba(180, 35, 24, 0.1);
+            --danger-border: rgba(180, 35, 24, 0.24);
+
+            --warning: #9a6700;
+            --warning-soft: rgba(154, 103, 0, 0.11);
+            --warning-border: rgba(154, 103, 0, 0.25);
+
+            --chart-grid: rgba(15, 23, 42, 0.08);
+            --chart-axis: rgba(15, 23, 42, 0.25);
+        }
+
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+
+            --page: #0f1216;
+            --page-gradient:
+                radial-gradient(circle at 16% -8%, rgba(110, 128, 151, 0.14), transparent 34%),
+                radial-gradient(circle at 90% 0%, rgba(73, 85, 105, 0.14), transparent 30%);
+            --surface: #171b22;
+            --surface-raised: #1c222b;
+            --surface-muted: #202733;
+            --surface-strong: #293241;
+            --surface-inverted: #f8fafc;
+
+            --text: #f3f6fa;
+            --text-soft: #d7dde7;
+            --muted: #95a1b2;
+            --muted-strong: #b8c1cf;
+
+            --border: rgba(255, 255, 255, 0.095);
+            --border-strong: rgba(255, 255, 255, 0.15);
+            --field: rgba(255, 255, 255, 0.035);
+            --field-hover: rgba(255, 255, 255, 0.055);
+
+            --accent: #9aacbf;
+            --accent-strong: #c3cfdb;
+            --accent-soft: rgba(154, 172, 191, 0.13);
+            --accent-border: rgba(154, 172, 191, 0.26);
+
+            --success: #80c994;
+            --success-soft: rgba(128, 201, 148, 0.11);
+            --success-border: rgba(128, 201, 148, 0.24);
+
+            --danger: #e38a87;
+            --danger-soft: rgba(227, 138, 135, 0.11);
+            --danger-border: rgba(227, 138, 135, 0.24);
+
+            --warning: #d8b76b;
+            --warning-soft: rgba(216, 183, 107, 0.11);
+            --warning-border: rgba(216, 183, 107, 0.25);
+
+            --chart-grid: rgba(255, 255, 255, 0.08);
+            --chart-axis: rgba(255, 255, 255, 0.22);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--page-gradient), var(--page);
+            color: var(--text);
+            font-family: var(--font-sans);
+            text-rendering: optimizeLegibility;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            user-select: none;
+        }
+
+        .app-shell {
+            width: min(1440px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 48px;
+        }
+
+        .app-header {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 18px;
+            align-items: start;
+            margin-bottom: 18px;
+        }
+
+        .brand-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .brand-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: linear-gradient(180deg, var(--surface-raised), var(--surface-muted));
+            color: var(--accent-strong);
+            box-shadow: var(--shadow-sm);
+            font-weight: 850;
+            letter-spacing: -0.04em;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            min-height: 26px;
+            padding: 0 9px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--muted-strong);
+            background: var(--surface);
+            font-size: 12px;
+            font-weight: 720;
+            letter-spacing: 0.02em;
+        }
+
+        .app-title {
+            margin: 0;
+            color: var(--text);
+            font-size: clamp(30px, 4vw, 54px);
+            line-height: 0.98;
+            letter-spacing: -0.055em;
+        }
+
+        .app-subtitle {
+            max-width: 820px;
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .header-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .stat-card {
+            min-height: 96px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: color-mix(in srgb, var(--surface) 92%, transparent);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 720;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .stat-value {
+            display: block;
+            margin-top: 12px;
+            color: var(--text);
+            font-size: 28px;
+            font-weight: 850;
+            line-height: 1;
+            letter-spacing: -0.045em;
+        }
+
+        .stat-hint {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: 290px minmax(0, 1fr) 360px;
+            gap: 14px;
+            align-items: start;
+        }
+
+        .panel {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            background: color-mix(in srgb, var(--surface) 94%, transparent);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            background: color-mix(in srgb, var(--surface-raised) 86%, transparent);
+        }
+
+        .panel-title {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 820;
+            letter-spacing: -0.01em;
+        }
+
+        .panel-subtitle {
+            margin: 4px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .panel-body {
+            padding: 14px;
+        }
+
+        .stack {
+            display: grid;
+            gap: 12px;
+        }
+
+        .ui-field {
+            display: grid;
+            gap: 7px;
+        }
+
+        .ui-label {
+            color: var(--muted-strong);
+            font-size: 12px;
+            font-weight: 720;
+            letter-spacing: 0.02em;
+        }
+
+        .ui-input,
+        .ui-select,
+        .ui-textarea {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            outline: none;
+            color: var(--text);
+            background: var(--field);
+            transition:
+                border-color var(--transition-fast),
+                box-shadow var(--transition-fast),
+                background var(--transition-fast);
+        }
+
+        .ui-input,
+        .ui-select {
+            height: 40px;
+            padding: 0 11px;
+        }
+
+        .ui-textarea {
+            min-height: 86px;
+            padding: 10px 11px;
+            resize: vertical;
+            line-height: 1.45;
+        }
+
+        .ui-input:hover,
+        .ui-select:hover,
+        .ui-textarea:hover {
+            background: var(--field-hover);
+        }
+
+        .ui-input:focus,
+        .ui-select:focus,
+        .ui-textarea:focus {
+            border-color: var(--accent-border);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .ui-button {
+            min-height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0 13px;
+            color: var(--text);
+            background: var(--surface-muted);
+            cursor: pointer;
+            transition:
+                transform var(--transition-fast),
+                background var(--transition-fast),
+                border-color var(--transition-fast),
+                color var(--transition-fast);
+        }
+
+        .ui-button:hover {
+            transform: translateY(-1px);
+            border-color: var(--border-strong);
+            background: var(--surface-strong);
+        }
+
+        .ui-button:disabled {
+            opacity: 0.56;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .ui-button-primary {
+            border-color: var(--accent-border);
+            color: var(--surface-inverted);
+            background: var(--accent-strong);
+            color: white;
+        }
+
+        :root[data-theme="dark"] .ui-button-primary {
+            color: #111827;
+        }
+
+        .ui-button-primary:hover {
+            border-color: var(--accent-border);
+            background: var(--accent);
+        }
+
+        .ui-button-ghost {
+            background: transparent;
+        }
+
+        .ui-button-danger {
+            border-color: var(--danger-border);
+            color: var(--danger);
+            background: var(--danger-soft);
+        }
+
+        .ui-button-success {
+            border-color: var(--success-border);
+            color: var(--success);
+            background: var(--success-soft);
+        }
+
+        .ui-button-small {
+            min-height: 30px;
+            padding: 0 9px;
+            font-size: 12px;
+        }
+
+        .ui-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 24px;
+            padding: 0 8px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xs);
+            color: var(--muted-strong);
+            background: var(--surface-muted);
+            font-size: 12px;
+            font-weight: 720;
+        }
+
+        .ui-badge-success {
+            border-color: var(--success-border);
+            color: var(--success);
+            background: var(--success-soft);
+        }
+
+        .ui-badge-danger {
+            border-color: var(--danger-border);
+            color: var(--danger);
+            background: var(--danger-soft);
+        }
+
+        .ui-badge-warning {
+            border-color: var(--warning-border);
+            color: var(--warning);
+            background: var(--warning-soft);
+        }
+
+        .segmented-control {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius-lg) + 2px);
+            background:
+                linear-gradient(180deg, color-mix(in srgb, var(--surface-raised) 92%, transparent), color-mix(in srgb, var(--surface-muted) 84%, transparent)),
+                var(--surface-muted);
+            box-shadow:
+                inset 0 1px 0 color-mix(in srgb, var(--surface-inverted) 8%, transparent),
+                var(--shadow-sm);
+        }
+
+        .mode-button {
+            position: relative;
+            flex: 1 1 118px;
+            min-height: 56px;
+            display: grid;
+            gap: 4px;
+            align-content: center;
+            border: 1px solid transparent;
+            border-radius: calc(var(--radius-md) + 1px);
+            padding: 10px 12px;
+            color: var(--muted-strong);
+            background: color-mix(in srgb, var(--surface) 28%, transparent);
+            cursor: pointer;
+            text-align: left;
+            overflow: hidden;
+            transition:
+                transform var(--transition-fast),
+                background var(--transition-fast),
+                border-color var(--transition-fast),
+                box-shadow var(--transition-fast),
+                color var(--transition-fast);
+        }
+
+        .mode-button::after {
+            content: "";
+            position: absolute;
+            right: 12px;
+            bottom: 8px;
+            left: 12px;
+            height: 2px;
+            border-radius: 999px;
+            background: transparent;
+            transition: background var(--transition-fast);
+        }
+
+        .mode-button-index {
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .mode-button-label {
+            color: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .mode-button:hover {
+            color: var(--text);
+            border-color: var(--accent-border);
+            background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface) 28%);
+            transform: translateY(-1px);
+        }
+
+        .mode-button.active {
+            color: var(--text);
+            border-color: color-mix(in srgb, var(--accent-border) 65%, var(--border) 35%);
+            background:
+                linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--accent-soft) 70%, var(--surface) 30%)),
+                var(--surface);
+            box-shadow:
+                0 10px 24px color-mix(in srgb, var(--accent-soft) 48%, transparent),
+                inset 0 1px 0 color-mix(in srgb, var(--surface-inverted) 10%, transparent);
+        }
+
+        .mode-button.active::after {
+            background: var(--accent);
+        }
+
+        .mode-button:focus-visible {
+            outline: none;
+            border-color: var(--accent-border);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .trainer-card {
+            min-height: 560px;
+            display: grid;
+            grid-template-rows: auto 1fr;
+        }
+
+        .trainer-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 20px 20px 0;
+        }
+
+        .mode-title {
+            margin: 0;
+            font-size: clamp(22px, 3vw, 34px);
+            line-height: 1.1;
+            letter-spacing: -0.045em;
+        }
+
+        .mode-description {
+            margin: 8px 0 0;
+            max-width: 720px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .exercise-root {
+            padding: 18px 20px 20px;
+        }
+
+        .exercise-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background:
+                linear-gradient(180deg, color-mix(in srgb, var(--surface-raised) 76%, transparent), transparent),
+                var(--surface);
+            overflow: hidden;
+        }
+
+        .question-area {
+            padding: clamp(20px, 4vw, 32px);
+        }
+
+        .question-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .question-label {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 720;
+        }
+
+        .question {
+            min-height: 118px;
+            display: flex;
+            align-items: center;
+            color: var(--text);
+            font-size: clamp(31px, 5vw, 58px);
+            font-weight: 860;
+            line-height: 1.06;
+            letter-spacing: -0.055em;
+        }
+
+        .example-panel {
+            margin-top: 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            background:
+                linear-gradient(180deg, color-mix(in srgb, var(--surface-raised) 76%, transparent), transparent),
+                color-mix(in srgb, var(--accent-soft) 28%, var(--surface) 72%);
+        }
+
+        .example-kicker {
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 780;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .example-text {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .answer-zone {
+            padding: 18px;
+            border-top: 1px solid var(--border);
+            background: color-mix(in srgb, var(--surface-muted) 50%, transparent);
+        }
+
+        .answer-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 10px;
+        }
+
+        .answer-input {
+            height: 48px;
+            font-size: 16px;
+        }
+
+        .answer-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .feedback {
+            min-height: 28px;
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 740;
+            line-height: 1.45;
+        }
+
+        .feedback.success {
+            color: var(--success);
+        }
+
+        .feedback.danger {
+            color: var(--danger);
+        }
+
+        .choices-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .choice-button {
+            min-height: 68px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            color: var(--text);
+            background: var(--field);
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .choice-button:hover {
+            border-color: var(--accent-border);
+            background: var(--accent-soft);
+        }
+
+        .choice-button.correct {
+            border-color: var(--success-border);
+            background: var(--success-soft);
+        }
+
+        .choice-button.wrong {
+            border-color: var(--danger-border);
+            background: var(--danger-soft);
+        }
+
+        .choice-index {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xs);
+            color: var(--muted-strong);
+            background: var(--surface);
+            font-size: 12px;
+            font-weight: 820;
+        }
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .match-column {
+            display: grid;
+            gap: 9px;
+        }
+
+        .match-item {
+            min-height: 52px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 11px 12px;
+            color: var(--text);
+            background: var(--field);
+            cursor: pointer;
+            text-align: left;
+            transition: var(--transition-fast);
+        }
+
+        .match-item:hover {
+            border-color: var(--accent-border);
+            background: var(--accent-soft);
+        }
+
+        .match-item.selected {
+            border-color: var(--accent-border);
+            background: var(--accent-soft);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .match-item.done {
+            color: var(--muted);
+            border-color: var(--success-border);
+            background: var(--success-soft);
+            pointer-events: none;
+        }
+
+        .flashcard {
+            min-height: 340px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            background:
+                linear-gradient(145deg, var(--accent-soft), transparent 48%),
+                var(--surface);
+            cursor: pointer;
+            text-align: center;
+            user-select: none;
+        }
+
+        .flashcard-main {
+            max-width: 860px;
+            font-size: clamp(34px, 6vw, 72px);
+            font-weight: 860;
+            line-height: 1.04;
+            letter-spacing: -0.06em;
+        }
+
+        .flashcard-sub {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .deck-grid {
+            display: grid;
+            gap: 8px;
+        }
+
+        .deck-button {
+            width: 100%;
+            display: grid;
+            gap: 8px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            color: var(--text);
+            background: var(--field);
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .deck-button:hover,
+        .deck-button.active {
+            border-color: var(--accent-border);
+            background: var(--accent-soft);
+        }
+
+        .deck-button-title {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            font-weight: 780;
+        }
+
+        .deck-button-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .mastery-line {
+            height: 6px;
+            border-radius: 999px;
+            overflow: hidden;
+            background: color-mix(in srgb, var(--muted) 16%, transparent);
+        }
+
+        .mastery-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: var(--accent);
+            transition: width var(--transition-base);
+        }
+
+        .word-list {
+            display: grid;
+            gap: 8px;
+            max-height: 430px;
+            overflow: auto;
+            padding-right: 4px;
+        }
+
+        .word-item {
+            display: grid;
+            gap: 8px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 11px;
+            background: var(--field);
+            transition: var(--transition-fast);
+        }
+
+        .word-item:hover,
+        .word-item.active {
+            border-color: var(--accent-border);
+            background: var(--accent-soft);
+        }
+
+        .word-item-main {
+            border: 0;
+            padding: 0;
+            color: inherit;
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .word-item-title {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: flex-start;
+            font-weight: 790;
+            line-height: 1.25;
+        }
+
+        .word-item-translation {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.35;
+        }
+
+        .word-item-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            align-items: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .word-actions {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .analytics-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .chart-wrap {
+            height: 256px;
+            position: relative;
+        }
+
+        .chart-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .insight-list {
+            display: grid;
+            gap: 8px;
+            max-height: 258px;
+            overflow: auto;
+            padding-right: 4px;
+        }
+
+        .insight-item {
+            display: grid;
+            gap: 7px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 10px;
+            background: var(--field);
+        }
+
+        .insight-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .insight-term {
+            font-weight: 780;
+            line-height: 1.25;
+        }
+
+        .insight-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .empty-state {
+            padding: 22px;
+            border: 1px dashed var(--border);
+            border-radius: var(--radius-md);
+            color: var(--muted);
+            background: var(--field);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 44px 16px;
+            background: rgba(2, 6, 23, 0.62);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .modal {
+            width: min(760px, 100%);
+            max-height: calc(100vh - 88px);
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-xl);
+            background: var(--surface);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: start;
+            padding: 18px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-raised);
+        }
+
+        .modal-title {
+            margin: 0;
+            font-size: 22px;
+            letter-spacing: -0.035em;
+        }
+
+        .modal-body {
+            display: grid;
+            gap: 14px;
+            padding: 18px;
+            overflow: auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .status-text {
+            min-height: 24px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .status-text.success {
+            color: var(--success);
+        }
+
+        .status-text.danger {
+            color: var(--danger);
+        }
+
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 6px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        kbd {
+            display: inline-flex;
+            align-items: center;
+            min-height: 20px;
+            padding: 0 6px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xs);
+            color: var(--muted-strong);
+            background: var(--surface-muted);
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 760;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 1180px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .app-grid {
+                grid-template-columns: 260px minmax(0, 1fr);
+            }
+
+            .analytics-column {
+                grid-column: 1 / -1;
+            }
+
+            .analytics-grid {
+                grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .app-header {
+                grid-template-columns: 1fr;
+            }
+
+            .header-actions {
+                justify-content: flex-start;
+            }
+
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .segmented-control {
+                gap: 6px;
+            }
+
+            .mode-button {
+                flex-basis: calc(50% - 3px);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .app-shell {
+                width: min(100% - 20px, 1440px);
+                padding-top: 16px;
+            }
+
+            .stats-grid,
+            .form-grid,
+            .shortcut-grid,
+            .choices-grid,
+            .match-grid,
+            .answer-row {
+                grid-template-columns: 1fr;
+            }
+
+            .trainer-header {
+                flex-direction: column;
+            }
+
+            .mode-button {
+                flex-basis: 100%;
+                min-height: 52px;
+            }
+
+            .question {
+                min-height: 92px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="app-shell">
+        <header class="app-header">
+            <div>
+                <div class="brand-row">
+                    <span class="brand-mark">W</span>
+                    <span class="eyebrow">English learning dashboard</span>
+                </div>
+                <h1 class="app-title">Words Trainer Pro</h1>
+                <p class="app-subtitle">
+                    Строгий тренажёр слов с деками, быстрыми режимами, собственным UI-kit, аналитикой по словам и темами.
+                    Можно учить всё сразу или фокусироваться только на слабых выражениях.
+                </p>
+            </div>
+
+            <div class="header-actions">
+                <button id="themeToggleButton" class="ui-button ui-button-ghost" type="button">Dark</button>
+                <button id="openAddWordButton" class="ui-button ui-button-primary" type="button">Добавить слово</button>
+                <button id="exportButton" class="ui-button ui-button-ghost" type="button">Export</button>
+                <label class="ui-button ui-button-ghost">
+                    Import
+                    <input id="importInput" class="hidden" type="file" accept="application/json">
+                </label>
+            </div>
+        </header>
+
+        <section class="stats-grid" aria-label="Learning statistics">
+            <article class="stat-card">
+                <span class="stat-label">Active words</span>
+                <span id="activeWordsValue" class="stat-value">0</span>
+                <span id="activeWordsHint" class="stat-hint">в текущей выборке</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Decks</span>
+                <span id="deckCountValue" class="stat-value">0</span>
+                <span class="stat-hint">доступно</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Attempts</span>
+                <span id="attemptsValue" class="stat-value">0</span>
+                <span class="stat-hint">всего ответов</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Accuracy</span>
+                <span id="accuracyValue" class="stat-value">0%</span>
+                <span class="stat-hint">общая точность</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Mastered</span>
+                <span id="masteredValue" class="stat-value">0</span>
+                <span class="stat-hint">≥ 3 попытки и ≥ 80%</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Weak</span>
+                <span id="weakValue" class="stat-value">0</span>
+                <span class="stat-hint">нужно добить</span>
+            </article>
+        </section>
+
+        <section class="app-grid">
+            <aside class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">Study controls</h2>
+                        <p class="panel-subtitle">Выбор деки, направления и фокуса.</p>
+                    </div>
+                </div>
+
+                <div class="panel-body stack">
+                    <label class="ui-field">
+                        <span class="ui-label">Deck</span>
+                        <select id="deckSelect" class="ui-select"></select>
+                    </label>
+
+                    <label class="ui-field">
+                        <span class="ui-label">Direction</span>
+                        <select id="directionSelect" class="ui-select">
+                            <option value="ruToEn">RU → EN</option>
+                            <option value="enToRu">EN → RU</option>
+                        </select>
+                    </label>
+
+                    <label class="ui-field">
+                        <span class="ui-label">Focus</span>
+                        <select id="focusSelect" class="ui-select">
+                            <option value="all">All words</option>
+                            <option value="new">New only</option>
+                            <option value="weak">Weak words</option>
+                            <option value="mastered">Mastered</option>
+                        </select>
+                    </label>
+
+                    <div class="stack">
+                        <button id="resetProgressButton" class="ui-button ui-button-ghost" type="button">Сбросить прогресс</button>
+                        <button id="clearCustomWordsButton" class="ui-button ui-button-danger" type="button">Удалить мои слова</button>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="panel trainer-card">
+                <div class="panel-header">
+                    <div class="segmented-control" role="tablist" aria-label="Training modes">
+                        <button class="mode-button active" data-mode="hardTyping" type="button" role="tab" aria-selected="true">
+                            <span class="mode-button-index">01</span>
+                            <span class="mode-button-label">Write</span>
+                        </button>
+                        <button class="mode-button" data-mode="hintTyping" type="button" role="tab" aria-selected="false">
+                            <span class="mode-button-index">02</span>
+                            <span class="mode-button-label">Hint</span>
+                        </button>
+                        <button class="mode-button" data-mode="choice" type="button" role="tab" aria-selected="false">
+                            <span class="mode-button-index">03</span>
+                            <span class="mode-button-label">Choice</span>
+                        </button>
+                        <button class="mode-button" data-mode="matching" type="button" role="tab" aria-selected="false">
+                            <span class="mode-button-index">04</span>
+                            <span class="mode-button-label">Match</span>
+                        </button>
+                        <button class="mode-button" data-mode="flashcards" type="button" role="tab" aria-selected="false">
+                            <span class="mode-button-index">05</span>
+                            <span class="mode-button-label">Cards</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="trainer-header">
+                    <div>
+                        <h2 id="modeTitle" class="mode-title">Написание</h2>
+                        <p id="modeDescription" class="mode-description"></p>
+                    </div>
+                    <span id="difficultyBadge" class="ui-badge">сложно</span>
+                </div>
+
+                <div id="exerciseRoot" class="exercise-root"></div>
+            </section>
+
+            <aside class="analytics-column stack">
+                <section class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2 class="panel-title">Words</h2>
+                            <p class="panel-subtitle">Поиск, запуск слова и быстрые статусы.</p>
+                        </div>
+                    </div>
+
+                    <div class="panel-body stack">
+                        <input id="searchInput" class="ui-input" type="search" placeholder="Search word / translation..." autocomplete="off">
+                        <div id="wordList" class="word-list"></div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2 class="panel-title">Performance chart</h2>
+                            <p class="panel-subtitle">Самые слабые слова снизу по точности.</p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-wrap">
+                            <canvas id="accuracyChart" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">Deck overview</h2>
+                        <p class="panel-subtitle">Клик по деке сразу переключает тренировку.</p>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="deckGrid" class="deck-grid"></div>
+                </div>
+            </section>
+
+            <section class="panel analytics-column">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">Word insights</h2>
+                        <p class="panel-subtitle">Слева слабые слова, справа то, что уже идёт хорошо.</p>
+                    </div>
+                </div>
+
+                <div class="panel-body analytics-grid">
+                    <div>
+                        <div class="ui-badge ui-badge-danger">Weakest words</div>
+                        <div id="weakWordsList" class="insight-list" style="margin-top: 10px;"></div>
+                    </div>
+                    <div>
+                        <div class="ui-badge ui-badge-success">Best words</div>
+                        <div id="bestWordsList" class="insight-list" style="margin-top: 10px;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h2 class="panel-title">Hotkeys</h2>
+                        <p class="panel-subtitle">Быстрое управление без мыши.</p>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="shortcut-grid">
+                        <div><kbd>Enter</kbd> check / next</div>
+                        <div><kbd>Ctrl</kbd> + <kbd>Enter</kbd> next word</div>
+                        <div><kbd>Ctrl</kbd> + <kbd>K</kbd> / <kbd>Ctrl</kbd> + <kbd>Л</kbd> / <kbd>/</kbd> add word</div>
+                        <div><kbd>Alt</kbd> + <kbd>1-5</kbd> mode</div>
+                        <div><kbd>1-4</kbd> choice answer</div>
+                        <div><kbd>N</kbd> / <kbd>→</kbd> next word</div>
+                        <div><kbd>Space</kbd> flip card</div>
+                        <div><kbd>K</kbd> know</div>
+                        <div><kbd>D</kbd> do not know</div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div id="addWordModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="addWordTitle">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h2 id="addWordTitle" class="modal-title">Добавить слово</h2>
+                    <p class="panel-subtitle">Можно добавить одно слово или импортировать пачкой через pipe-формат.</p>
+                </div>
+                <button id="closeAddWordButton" class="ui-button ui-button-ghost ui-button-small" type="button">Close</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-grid">
+                    <label class="ui-field">
+                        <span class="ui-label">English word / phrase</span>
+                        <input id="newTermInput" class="ui-input" type="text" placeholder="genuinely" autocomplete="off">
+                    </label>
+
+                    <label class="ui-field">
+                        <span class="ui-label">Translation</span>
+                        <input id="newTranslationInput" class="ui-input" type="text" placeholder="искренне, действительно" autocomplete="off">
+                    </label>
+
+                    <label class="ui-field">
+                        <span class="ui-label">Deck</span>
+                        <input id="newDeckInput" class="ui-input" type="text" list="deckOptions" placeholder="My Words">
+                        <datalist id="deckOptions"></datalist>
+                    </label>
+
+                    <label class="ui-field">
+                        <span class="ui-label">Aliases</span>
+                        <input id="newAliasesInput" class="ui-input" type="text" placeholder="alias 1, alias 2" autocomplete="off">
+                    </label>
+
+                    <label class="ui-field full-width">
+                        <span class="ui-label">Example sentence</span>
+                        <textarea id="newExampleInput" class="ui-textarea" placeholder="I genuinely want to understand this."></textarea>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <div class="status-text" id="addWordStatus"></div>
+                    <div class="header-actions">
+                        <button id="clearWordFormButton" class="ui-button ui-button-ghost" type="button">Очистить</button>
+                        <button id="addWordButton" class="ui-button ui-button-primary" type="button">Save word</button>
+                    </div>
+                </div>
+
+                <div class="panel" style="box-shadow: none;">
+                    <div class="panel-header">
+                        <div>
+                            <h3 class="panel-title">Bulk add</h3>
+                            <p class="panel-subtitle">Формат: word | translation | deck | example | alias1, alias2</p>
+                        </div>
+                    </div>
+                    <div class="panel-body stack">
+                        <textarea id="bulkImportInput" class="ui-textarea" placeholder="suck up | подлизываться | Death Note 01-04 | He tries to suck up to the boss. | flatter"></textarea>
+                        <button id="bulkImportButton" class="ui-button ui-button-ghost" type="button">Import rows</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BASE_WORDS = [
+            {
+                        "term": "murder",
+                        "translation": "убийство; убивать",
+                        "example": "The detective investigated the murder.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "bountiful",
+                        "translation": "обильный, богатый",
+                        "example": "They hoped for a bountiful catch.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "catch",
+                        "translation": "улов; поймать",
+                        "example": "The fishing boat returned with a big catch.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "anxiety",
+                        "translation": "тревога, беспокойство",
+                        "example": "His anxiety started to fade.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "subside",
+                        "translation": "утихать, спадать",
+                        "example": "The pain began to subside.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "stab",
+                        "translation": "удар ножом; колоть",
+                        "example": "The news hit him like a stab.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "rotting",
+                        "translation": "гниющий",
+                        "example": "The old wood was rotting.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "extinction",
+                        "translation": "вымирание",
+                        "example": "Some species are close to extinction.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "lame",
+                        "translation": "отстойный, слабый; хромой",
+                        "example": "That excuse sounds lame.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "within",
+                        "translation": "в течение; внутри; в пределах",
+                        "example": "I will finish it within an hour.",
+                        "deck": "Death Note 01-01",
+                        "aliases": [
+                                    "within 40 seconds"
+                        ]
+            },
+            {
+                        "term": "give someone that",
+                        "translation": "признать это за кем-то; отдать должное",
+                        "example": "I do not agree, but I will give him that.",
+                        "deck": "Death Note 01-01",
+                        "aliases": [
+                                    "I will give them that",
+                                    "give him that",
+                                    "give them that"
+                        ]
+            },
+            {
+                        "term": "what do you make of this",
+                        "translation": "что ты об этом думаешь?",
+                        "example": "What do you make of this message?",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "deny allegations",
+                        "translation": "отрицать обвинения",
+                        "example": "They denied the allegations.",
+                        "deck": "Death Note 01-01",
+                        "aliases": [
+                                    "denying allegations"
+                        ]
+            },
+            {
+                        "term": "coincidence",
+                        "translation": "совпадение",
+                        "example": "It was a strange coincidence.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "that settles it",
+                        "translation": "это решает вопрос; значит, решено",
+                        "example": "That settles it, we are leaving now.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "I hate to tell you",
+                        "translation": "мне неприятно тебе говорить, но...",
+                        "example": "I hate to tell you, but the plan failed.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "witness",
+                        "translation": "свидетель; быть свидетелем",
+                        "example": "The witness saw everything.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "certainly",
+                        "translation": "конечно, определённо",
+                        "example": "I will certainly help.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "bond",
+                        "translation": "связь, узы; сближаться",
+                        "example": "They have a strong bond.",
+                        "deck": "Death Note 01-01"
+            },
+            {
+                        "term": "do not bother me",
+                        "translation": "не беспокой меня; не мешай мне",
+                        "example": "Please do not bother me now.",
+                        "deck": "Death Note 01-01",
+                        "aliases": [
+                                    "don't bother me",
+                                    "dont bother me"
+                        ]
+            },
+            {
+                        "term": "recite",
+                        "translation": "декламировать; читать вслух по памяти",
+                        "example": "She can recite the poem.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "recite this line"
+                        ]
+            },
+            {
+                        "term": "last resort",
+                        "translation": "последнее средство",
+                        "example": "Use this only as a last resort.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "simultaneously",
+                        "translation": "одновременно",
+                        "example": "The tasks run simultaneously.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "they will do business in multiple regions simultaneously"
+                        ]
+            },
+            {
+                        "term": "sneak around",
+                        "translation": "тайком ходить; делать что-то скрытно",
+                        "example": "He was sneaking around without permission.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "sneaking around"
+                        ]
+            },
+            {
+                        "term": "permission",
+                        "translation": "разрешение",
+                        "example": "Ask for permission first.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "certain",
+                        "translation": "уверенный; определённый",
+                        "example": "I am certain that it will work.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "dead certain"
+                        ]
+            },
+            {
+                        "term": "anticipated",
+                        "translation": "ожидаемый; предвкушаемый",
+                        "example": "His anticipated visit excited everyone.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "anticipated visit"
+                        ]
+            },
+            {
+                        "term": "overwhelmed",
+                        "translation": "перегруженный эмоциями; ошеломлённый",
+                        "example": "He felt overwhelmed by anxiety.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "overwhelmed as anxiety swallowed his confidence"
+                        ]
+            },
+            {
+                        "term": "swallow confidence",
+                        "translation": "поглотить уверенность; подавить уверенность",
+                        "example": "Anxiety swallowed his confidence.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "anxiety swallowed his confidence"
+                        ]
+            },
+            {
+                        "term": "arrogant",
+                        "translation": "высокомерный, надменный",
+                        "example": "His arrogant attitude annoyed everyone.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "attitude",
+                        "translation": "отношение, настрой, манера поведения",
+                        "example": "Your attitude matters.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "make someone's blood boil",
+                        "translation": "доводить кого-то до бешенства",
+                        "example": "His attitude makes my blood boil.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "make everyone’s blood boil",
+                                    "make everyone's blood boil"
+                        ]
+            },
+            {
+                        "term": "whether",
+                        "translation": "ли; независимо от того, ... ли",
+                        "example": "I do not know whether he will come.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "obtain",
+                        "translation": "получить, добыть",
+                        "example": "You must obtain a permit.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "must obtain"
+                        ]
+            },
+            {
+                        "term": "permit",
+                        "translation": "разрешение; разрешать",
+                        "example": "Hunters need a permit.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "permits"
+                        ]
+            },
+            {
+                        "term": "hunting season",
+                        "translation": "охотничий сезон",
+                        "example": "The hunting season begins soon.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "one at a time",
+                        "translation": "по одному; по очереди",
+                        "example": "Please answer one at a time.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "ensure",
+                        "translation": "обеспечить, убедиться",
+                        "example": "Check it to ensure everything works.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "overlook",
+                        "translation": "упустить из виду; не заметить; смотреть на",
+                        "example": "Do not overlook this detail.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "crucial",
+                        "translation": "ключевой, крайне важный",
+                        "example": "Sleep is crucial for recovery.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "inmate",
+                        "translation": "заключённый",
+                        "example": "The inmate received medical care.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "convict",
+                        "translation": "осуждённый; признавать виновным",
+                        "example": "Each convict has an ID number.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "identification",
+                        "translation": "идентификация; удостоверение личности",
+                        "example": "Bring your identification.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "tracking",
+                        "translation": "отслеживание",
+                        "example": "Tracking helps us see progress.",
+                        "deck": "Death Note 01-02"
+            },
+            {
+                        "term": "well hidden",
+                        "translation": "хорошо спрятанный",
+                        "example": "The key was well hidden.",
+                        "deck": "Death Note 01-02",
+                        "aliases": [
+                                    "particularly well hidden"
+                        ]
+            },
+            {
+                        "term": "verifiable",
+                        "translation": "проверяемый, подтверждаемый",
+                        "example": "We need a verifiable claim.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "claim",
+                        "translation": "утверждение; заявлять; требовать",
+                        "example": "His claim needs proof.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "coughing",
+                        "translation": "кашляющий; кашель",
+                        "example": "Coughing dogs need a vet check.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "coughing dogs"
+                        ]
+            },
+            {
+                        "term": "rule out",
+                        "translation": "исключить вариант/причину",
+                        "example": "Tests can rule out serious issues.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "goose",
+                        "translation": "гусь",
+                        "example": "A goose walked near us.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "upon arrival",
+                        "translation": "по прибытии",
+                        "example": "Call me upon arrival.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "upon arrival call me"
+                        ]
+            },
+            {
+                        "term": "upon the table",
+                        "translation": "на столе; поверх стола",
+                        "example": "The book was upon the table.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "the book upon the table"
+                        ]
+            },
+            {
+                        "term": "integrity",
+                        "translation": "честность, порядочность, цельность",
+                        "example": "Integrity is important.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "in matters of integrity"
+                        ]
+            },
+            {
+                        "term": "paragon",
+                        "translation": "образец, пример совершенства",
+                        "example": "He is a paragon of integrity.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "paragon to which we can all aspire"
+                        ]
+            },
+            {
+                        "term": "aspire",
+                        "translation": "стремиться",
+                        "example": "We aspire to improve.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "take a toll",
+                        "translation": "негативно сказаться; брать своё",
+                        "example": "Stress can take a toll on health.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "takes a toll"
+                        ]
+            },
+            {
+                        "term": "deliberately",
+                        "translation": "намеренно, осознанно",
+                        "example": "He deliberately left early.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "deliberately left"
+                        ]
+            },
+            {
+                        "term": "criminal",
+                        "translation": "преступник; преступный",
+                        "example": "The criminal was arrested.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "resent",
+                        "translation": "обижаться; возмущаться",
+                        "example": "They may resent your refusal.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "resent your refusal"
+                        ]
+            },
+            {
+                        "term": "refusal",
+                        "translation": "отказ",
+                        "example": "His refusal surprised them.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "contradict",
+                        "translation": "противоречить",
+                        "example": "The facts contradict that theory.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "theory",
+                        "translation": "теория",
+                        "example": "This theory sounds reasonable.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "commend",
+                        "translation": "хвалить, выражать одобрение",
+                        "example": "We commend their readiness.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "we commend both parties"
+                        ]
+            },
+            {
+                        "term": "realism",
+                        "translation": "реализм",
+                        "example": "Their realism helped them compromise.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "readiness",
+                        "translation": "готовность",
+                        "example": "Readiness to learn is important.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "compromise",
+                        "translation": "компромисс; идти на компромисс",
+                        "example": "Both sides reached a compromise.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "thorough",
+                        "translation": "тщательный, основательный",
+                        "example": "Do a thorough check.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "thorough as possible"
+                        ]
+            },
+            {
+                        "term": "pacing",
+                        "translation": "темп, распределение скорости",
+                        "example": "The pacing of the story is slow.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "pacing of the killings"
+                        ]
+            },
+            {
+                        "term": "minimum requirements",
+                        "translation": "минимальные требования",
+                        "example": "Check the minimum requirements first.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "prior knowledge",
+                        "translation": "предварительные знания",
+                        "example": "No prior knowledge is needed.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "terrifying",
+                        "translation": "ужасающий, пугающий",
+                        "example": "It was a terrifying stunt.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "stunt",
+                        "translation": "трюк",
+                        "example": "The stunt looked dangerous.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "slack off",
+                        "translation": "расслабляться, филонить, снижать усилия",
+                        "example": "Do not slack off before the exam.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "slacking off"
+                        ]
+            },
+            {
+                        "term": "reputation",
+                        "translation": "репутация",
+                        "example": "His reputation suffered.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "suffer",
+                        "translation": "страдать; ухудшаться",
+                        "example": "Your work may suffer.",
+                        "deck": "Death Note 01-03"
+            },
+            {
+                        "term": "sentenced",
+                        "translation": "приговорённый; был приговорён",
+                        "example": "He was sentenced to three years.",
+                        "deck": "Death Note 01-03",
+                        "aliases": [
+                                    "sentenced to three years in prison"
+                        ]
+            },
+            {
+                        "term": "intend to reign",
+                        "translation": "намереваться править, царствовать",
+                        "example": "He does not just want power; he intends to reign.",
+                        "deck": "Death Note 01-04",
+                        "aliases": [
+                                    "intend to rule"
+                        ]
+            },
+            {
+                        "term": "I'm still daunted by the 1% though",
+                        "translation": "но меня всё ещё пугает/смущает этот 1%",
+                        "example": "The odds are good, but I'm still daunted by the 1% though.",
+                        "deck": "Death Note 01-04",
+                        "aliases": [
+                                    "I am still daunted by the 1% though",
+                                    "still daunted by the 1%"
+                        ]
+            },
+            {
+                        "term": "suck up",
+                        "translation": "подлизываться; льстить ради выгоды",
+                        "example": "He keeps trying to suck up to the boss.",
+                        "deck": "Death Note 01-04"
+            },
+            {
+                        "term": "give someone a hard time",
+                        "translation": "доставлять кому-то проблемы; придираться; донимать",
+                        "example": "Stop giving me a hard time about one small mistake.",
+                        "deck": "Death Note 01-04",
+                        "aliases": [
+                                    "giving me a hard time",
+                                    "give me a hard time"
+                        ]
+            },
+            {
+                        "term": "ahead of time",
+                        "translation": "заранее, раньше срока",
+                        "example": "Tell me ahead of time if your plans change.",
+                        "deck": "Death Note 01-04",
+                        "aliases": [
+                                    "in advance",
+                                    "ahead of time / in advance"
+                        ]
+            },
+            {
+                        "term": "will",
+                        "translation": "воля; завещание; желание/намерение",
+                        "example": "A will can mean a legal document or a person's determination.",
+                        "deck": "Death Note 01-04",
+                        "aliases": [
+                                    "a will"
+                        ]
+            },
+            {
+                        "term": "genuinely",
+                        "translation": "искренне, по-настоящему, действительно",
+                        "example": "I genuinely want to understand what happened.",
+                        "deck": "Death Note 01-04"
+            },
+            {
+                        "term": "do not already know",
+                        "translation": "уже не знать; не знать заранее",
+                        "example": "Do not explain things they do not already know.",
+                        "deck": "Death Note 01-04",
+                        "aliases": [
+                                    "don't already know",
+                                    "dont already know"
+                        ]
+            },
+            {
+                        "term": "we'd only be giving",
+                        "translation": "мы бы только давали/предоставляли",
+                        "example": "If we share that, we'd only be giving him more information.",
+                        "deck": "Death Note 01-04",
+                        "aliases": [
+                                    "we would only be giving",
+                                    "would only be giving"
+                        ]
+            }
+];
+
+        const STORAGE_KEYS = {
+            progress: "english-words-trainer-progress-v1",
+            settings: "english-words-trainer-settings-v3",
+            customWords: "english-words-trainer-custom-words-v1"
+        };
+
+        const ALL_DECKS_VALUE = "__all__";
+        const CUSTOM_WORD_SOURCE = "custom";
+        const DEFAULT_CUSTOM_DECK = "My Words";
+
+        const MODES = {
+            hardTyping: {
+                title: "Написание без подсказок",
+                description: "Самый строгий режим. Видишь перевод и пишешь английское слово или фразу полностью.",
+                difficulty: "hard"
+            },
+            hintTyping: {
+                title: "Написание с подсказкой",
+                description: "Первая и последняя буква остаются видимыми. Хорошо для длинных фраз.",
+                difficulty: "medium"
+            },
+            choice: {
+                title: "Выбор ответа",
+                description: "Выбери правильный вариант. Клавиши 1–4 работают сразу.",
+                difficulty: "easy"
+            },
+            matching: {
+                title: "Соединение пар",
+                description: "Соедини английские выражения с переводами. Раунд берёт слова из текущей выборки.",
+                difficulty: "easy"
+            },
+            flashcards: {
+                title: "Карточки",
+                description: "Space переворачивает карточку. K — знаю, D — не знаю.",
+                difficulty: "review"
+            }
+        };
+
+        const state = {
+            words: [],
+            mode: "hardTyping",
+            selectedDeck: ALL_DECKS_VALUE,
+            addWordDeck: "",
+            direction: "ruToEn",
+            focus: "all",
+            theme: "dark",
+            currentWord: null,
+            isFlashcardFlipped: false,
+            selectedMatchLeft: null,
+            selectedMatchRight: null,
+            matchingWords: [],
+            matchingRightWords: [],
+            hasCurrentAnswerBeenChecked: false,
+            progress: createEmptyProgress()
+        };
+
+        const elements = {
+            html: document.documentElement,
+            themeToggleButton: document.getElementById("themeToggleButton"),
+            openAddWordButton: document.getElementById("openAddWordButton"),
+            closeAddWordButton: document.getElementById("closeAddWordButton"),
+            addWordModal: document.getElementById("addWordModal"),
+            exportButton: document.getElementById("exportButton"),
+            importInput: document.getElementById("importInput"),
+            activeWordsValue: document.getElementById("activeWordsValue"),
+            activeWordsHint: document.getElementById("activeWordsHint"),
+            deckCountValue: document.getElementById("deckCountValue"),
+            attemptsValue: document.getElementById("attemptsValue"),
+            accuracyValue: document.getElementById("accuracyValue"),
+            masteredValue: document.getElementById("masteredValue"),
+            weakValue: document.getElementById("weakValue"),
+            deckSelect: document.getElementById("deckSelect"),
+            directionSelect: document.getElementById("directionSelect"),
+            focusSelect: document.getElementById("focusSelect"),
+            resetProgressButton: document.getElementById("resetProgressButton"),
+            clearCustomWordsButton: document.getElementById("clearCustomWordsButton"),
+            modeTitle: document.getElementById("modeTitle"),
+            modeDescription: document.getElementById("modeDescription"),
+            difficultyBadge: document.getElementById("difficultyBadge"),
+            exerciseRoot: document.getElementById("exerciseRoot"),
+            searchInput: document.getElementById("searchInput"),
+            wordList: document.getElementById("wordList"),
+            deckGrid: document.getElementById("deckGrid"),
+            accuracyChart: document.getElementById("accuracyChart"),
+            weakWordsList: document.getElementById("weakWordsList"),
+            bestWordsList: document.getElementById("bestWordsList"),
+            newTermInput: document.getElementById("newTermInput"),
+            newTranslationInput: document.getElementById("newTranslationInput"),
+            newDeckInput: document.getElementById("newDeckInput"),
+            newAliasesInput: document.getElementById("newAliasesInput"),
+            newExampleInput: document.getElementById("newExampleInput"),
+            addWordButton: document.getElementById("addWordButton"),
+            clearWordFormButton: document.getElementById("clearWordFormButton"),
+            addWordStatus: document.getElementById("addWordStatus"),
+            deckOptions: document.getElementById("deckOptions"),
+            bulkImportInput: document.getElementById("bulkImportInput"),
+            bulkImportButton: document.getElementById("bulkImportButton")
+        };
+
+        init();
+
+        function init() {
+            state.words = buildWords();
+            state.progress = loadProgress();
+
+            restoreSettings();
+            applyTheme();
+
+            bindEvents();
+            renderStaticControls();
+            startRound();
+        }
+
+        function bindEvents() {
+            elements.themeToggleButton.addEventListener("click", toggleTheme);
+            elements.openAddWordButton.addEventListener("click", openAddWordModal);
+            elements.closeAddWordButton.addEventListener("click", closeAddWordModal);
+            elements.addWordModal.addEventListener("click", (event) => {
+                if (event.target === elements.addWordModal) {
+                    closeAddWordModal();
+                }
+            });
+
+            elements.exportButton.addEventListener("click", exportData);
+            elements.importInput.addEventListener("change", importData);
+
+            elements.deckSelect.addEventListener("change", () => {
+                state.selectedDeck = elements.deckSelect.value;
+                syncNewWordDeckInput();
+                saveSettings();
+                startRound();
+            });
+
+            elements.directionSelect.addEventListener("change", () => {
+                state.direction = elements.directionSelect.value;
+                saveSettings();
+                startRound();
+            });
+
+            elements.focusSelect.addEventListener("change", () => {
+                state.focus = elements.focusSelect.value;
+                saveSettings();
+                startRound();
+            });
+
+            elements.newDeckInput.addEventListener("input", () => {
+                rememberAddWordDeck(elements.newDeckInput.value);
+            });
+
+            elements.newDeckInput.addEventListener("change", () => {
+                rememberAddWordDeck(elements.newDeckInput.value);
+                saveSettings();
+            });
+
+            elements.searchInput.addEventListener("input", renderWordList);
+
+            elements.resetProgressButton.addEventListener("click", () => {
+                if (!confirm("Сбросить весь прогресс?")) {
+                    return;
+                }
+
+                state.progress = createEmptyProgress();
+                saveProgress();
+                startRound();
+            });
+
+            elements.clearCustomWordsButton.addEventListener("click", () => {
+                const customWordsCount = state.words.filter((word) => word.source === CUSTOM_WORD_SOURCE).length;
+
+                if (!customWordsCount) {
+                    return;
+                }
+
+                if (!confirm(`Удалить все свои слова (${customWordsCount})?`)) {
+                    return;
+                }
+
+                state.words = state.words.filter((word) => word.source !== CUSTOM_WORD_SOURCE);
+                saveCustomWords();
+
+                if (!getDecks().includes(state.selectedDeck)) {
+                    state.selectedDeck = ALL_DECKS_VALUE;
+                }
+
+                renderStaticControls();
+                startRound();
+            });
+
+            document.querySelectorAll(".mode-button").forEach((button) => {
+                button.addEventListener("click", () => setMode(button.dataset.mode));
+            });
+
+            elements.addWordButton.addEventListener("click", addWordFromForm);
+            elements.clearWordFormButton.addEventListener("click", () => {
+                clearWordForm();
+                showAddWordStatus("", "");
+            });
+            elements.bulkImportButton.addEventListener("click", importBulkWords);
+
+            [elements.newTermInput, elements.newTranslationInput].forEach((input) => {
+                input.addEventListener("keydown", (event) => {
+                    if (event.key !== "Enter") {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    addWordFromForm();
+                });
+            });
+
+            window.addEventListener("resize", debounce(drawAccuracyChart, 120));
+            document.addEventListener("keydown", handleGlobalKeydown);
+        }
+
+        function buildWords() {
+            return [
+                ...BASE_WORDS.map((word) => normalizeStoredWord(word, "base")).filter(Boolean),
+                ...loadCustomWords()
+            ];
+        }
+
+        function createEmptyProgress() {
+            return {
+                correct: 0,
+                wrong: 0,
+                words: {}
+            };
+        }
+
+        function loadProgress() {
+            try {
+                const savedProgress = JSON.parse(localStorage.getItem(STORAGE_KEYS.progress));
+
+                if (!savedProgress || typeof savedProgress !== "object") {
+                    return createEmptyProgress();
+                }
+
+                const wordsProgress = savedProgress.words && typeof savedProgress.words === "object"
+                    ? savedProgress.words
+                    : {};
+
+                return {
+                    correct: Number(savedProgress.correct) || 0,
+                    wrong: Number(savedProgress.wrong) || 0,
+                    words: wordsProgress
+                };
+            } catch {
+                return createEmptyProgress();
+            }
+        }
+
+        function saveProgress() {
+            localStorage.setItem(STORAGE_KEYS.progress, JSON.stringify(state.progress));
+        }
+
+        function restoreSettings() {
+            const preferredTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+
+            state.theme = preferredTheme;
+
+            try {
+                const savedSettings = JSON.parse(localStorage.getItem(STORAGE_KEYS.settings));
+
+                if (!savedSettings || typeof savedSettings !== "object") {
+                    return;
+                }
+
+                if (savedSettings.mode && MODES[savedSettings.mode]) {
+                    state.mode = savedSettings.mode;
+                }
+
+                if (savedSettings.direction === "ruToEn" || savedSettings.direction === "enToRu") {
+                    state.direction = savedSettings.direction;
+                }
+
+                if (savedSettings.focus && ["all", "new", "weak", "mastered"].includes(savedSettings.focus)) {
+                    state.focus = savedSettings.focus;
+                }
+
+                if (savedSettings.theme === "light" || savedSettings.theme === "dark") {
+                    state.theme = savedSettings.theme;
+                }
+
+                if (savedSettings.selectedDeck === ALL_DECKS_VALUE || getDecks().includes(savedSettings.selectedDeck)) {
+                    state.selectedDeck = savedSettings.selectedDeck;
+                }
+
+                if (cleanText(savedSettings.addWordDeck)) {
+                    state.addWordDeck = cleanText(savedSettings.addWordDeck);
+                }
+            } catch {}
+        }
+
+        function saveSettings() {
+            localStorage.setItem(STORAGE_KEYS.settings, JSON.stringify({
+                mode: state.mode,
+                selectedDeck: state.selectedDeck,
+                addWordDeck: getPreferredAddWordDeck(),
+                direction: state.direction,
+                focus: state.focus,
+                theme: state.theme
+            }));
+        }
+
+        function applyTheme() {
+            elements.html.dataset.theme = state.theme;
+            elements.themeToggleButton.textContent = state.theme === "dark" ? "Light mode" : "Dark mode";
+            drawAccuracyChart();
+        }
+
+        function toggleTheme() {
+            state.theme = state.theme === "dark" ? "light" : "dark";
+            applyTheme();
+            saveSettings();
+        }
+
+        function renderStaticControls() {
+            renderDeckSelect();
+            renderDeckOptions();
+
+            elements.directionSelect.value = state.direction;
+            elements.focusSelect.value = state.focus;
+
+            document.querySelectorAll(".mode-button").forEach((button) => {
+                const isActive = button.dataset.mode === state.mode;
+
+                button.classList.toggle("active", isActive);
+                button.setAttribute("aria-selected", String(isActive));
+                button.tabIndex = isActive ? 0 : -1;
+            });
+
+            syncNewWordDeckInput();
+        }
+
+        function renderDeckSelect() {
+            const decks = getDecks();
+
+            elements.deckSelect.innerHTML = [
+                `<option value="${ALL_DECKS_VALUE}">All decks (${state.words.length})</option>`,
+                ...decks.map((deck) => {
+                    const deckWordsCount = state.words.filter((word) => word.deck === deck).length;
+
+                    return `<option value="${escapeHtml(deck)}">${escapeHtml(deck)} (${deckWordsCount})</option>`;
+                })
+            ].join("");
+
+            if (state.selectedDeck !== ALL_DECKS_VALUE && !decks.includes(state.selectedDeck)) {
+                state.selectedDeck = ALL_DECKS_VALUE;
+            }
+
+            elements.deckSelect.value = state.selectedDeck;
+        }
+
+        function renderDeckOptions() {
+            elements.deckOptions.innerHTML = getDecks()
+                .map((deck) => `<option value="${escapeHtml(deck)}"></option>`)
+                .join("");
+        }
+
+        function setMode(nextMode) {
+            if (!MODES[nextMode]) {
+                return;
+            }
+
+            state.mode = nextMode;
+            state.isFlashcardFlipped = false;
+            saveSettings();
+            renderStaticControls();
+            startRound();
+        }
+
+        function startRound(preferredWord = null) {
+            state.currentWord = preferredWord || getWeightedWord();
+            state.isFlashcardFlipped = false;
+            state.selectedMatchLeft = null;
+            state.selectedMatchRight = null;
+            state.hasCurrentAnswerBeenChecked = false;
+
+            if (state.mode === "matching") {
+                createMatchingRound();
+            }
+
+            renderApp();
+        }
+
+        function renderApp() {
+            renderModeHeader();
+            renderExercise();
+            renderStats();
+            renderDeckGrid();
+            renderWordList();
+            renderInsights();
+            drawAccuracyChart();
+        }
+
+        function renderModeHeader() {
+            const mode = MODES[state.mode];
+
+            elements.modeTitle.textContent = mode.title;
+            elements.modeDescription.textContent = mode.description;
+            elements.difficultyBadge.textContent = mode.difficulty;
+        }
+
+        function renderExercise() {
+            if (!state.currentWord) {
+                renderNoWordsState();
+                return;
+            }
+
+            if (state.mode === "hardTyping") {
+                renderTyping(false);
+                return;
+            }
+
+            if (state.mode === "hintTyping") {
+                renderTyping(true);
+                return;
+            }
+
+            if (state.mode === "choice") {
+                renderChoice();
+                return;
+            }
+
+            if (state.mode === "matching") {
+                renderMatching();
+                return;
+            }
+
+            renderFlashcards();
+        }
+
+        function renderNoWordsState() {
+            elements.exerciseRoot.innerHTML = `
+                <div class="empty-state">
+                    В этой выборке пока нет слов. Переключи Focus на All words, выбери другую деку или добавь новое слово.
+                </div>
+            `;
+        }
+
+        function getExampleRevealMarkup(word) {
+            if (!word.example) {
+                return "";
+            }
+
+            return `
+                <div id="exampleReveal" class="example-panel hidden" aria-live="polite">
+                    <div class="example-kicker">Example</div>
+                    <div class="example-text">${escapeHtml(word.example)}</div>
+                </div>
+            `;
+        }
+
+        function revealExampleText() {
+            const exampleReveal = document.getElementById("exampleReveal");
+
+            if (!exampleReveal) {
+                return;
+            }
+
+            exampleReveal.classList.remove("hidden");
+        }
+
+        function renderTyping(hasHint) {
+            const word = state.currentWord;
+            const questionData = getQuestionAndAnswer(word);
+            const hintText = hasHint ? createHint(questionData.answer) : "";
+
+            elements.exerciseRoot.innerHTML = `
+                <div class="exercise-card">
+                    <div class="question-area">
+                        <div class="question-meta">
+                            <span class="question-label">${escapeHtml(questionData.questionLabel)}</span>
+                            <span class="ui-badge">${escapeHtml(word.deck)}</span>
+                            ${getWordStatusBadge(word)}
+                        </div>
+                        <div class="question">${escapeHtml(questionData.question)}</div>
+                        ${hintText ? `<div class="example-text">Hint: <strong>${escapeHtml(hintText)}</strong></div>` : ""}
+                    </div>
+
+                    <div class="answer-zone">
+                        <div class="answer-row">
+                            <input id="answerInput" class="ui-input answer-input" type="text" placeholder="Type answer..." autocomplete="off">
+                            <button id="checkButton" class="ui-button ui-button-primary" type="button">Check</button>
+                        </div>
+
+                        <div id="feedback" class="feedback"></div>
+                        ${getExampleRevealMarkup(word)}
+
+                        <div class="answer-actions">
+                            <button id="showAnswerButton" class="ui-button ui-button-ghost" type="button">Show answer</button>
+                            <button id="nextButton" class="ui-button ui-button-ghost" type="button">Next</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const answerInput = document.getElementById("answerInput");
+            const checkButton = document.getElementById("checkButton");
+            const showAnswerButton = document.getElementById("showAnswerButton");
+            const nextButton = document.getElementById("nextButton");
+
+            answerInput.focus();
+
+            answerInput.addEventListener("keydown", (event) => {
+                if (event.key !== "Enter") {
+                    return;
+                }
+
+                event.preventDefault();
+
+                if (state.hasCurrentAnswerBeenChecked) {
+                    startRound();
+                    return;
+                }
+
+                checkTypingAnswer(answerInput.value, word, questionData);
+            });
+
+            checkButton.addEventListener("click", () => checkTypingAnswer(answerInput.value, word, questionData));
+
+            showAnswerButton.addEventListener("click", () => {
+                if (!state.hasCurrentAnswerBeenChecked) {
+                    markWord(word.term, false);
+                    state.hasCurrentAnswerBeenChecked = true;
+                }
+
+                showFeedback(false, `Answer: ${questionData.answer}`);
+                revealExampleText();
+                answerInput.disabled = true;
+                checkButton.disabled = true;
+            });
+
+            nextButton.addEventListener("click", () => startRound());
+        }
+
+        function checkTypingAnswer(userAnswer, word, questionData) {
+            if (state.hasCurrentAnswerBeenChecked) {
+                startRound();
+                return;
+            }
+
+            const acceptedAnswers = getAcceptedAnswers(word, questionData);
+            const isCorrect = isAnswerCorrect(userAnswer, acceptedAnswers);
+
+            state.hasCurrentAnswerBeenChecked = true;
+            markWord(word.term, isCorrect);
+
+            const answerInput = document.getElementById("answerInput");
+            const checkButton = document.getElementById("checkButton");
+
+            if (answerInput) {
+                answerInput.disabled = true;
+            }
+
+            if (checkButton) {
+                checkButton.disabled = true;
+            }
+
+            showFeedback(
+                isCorrect,
+                isCorrect
+                    ? "Correct. Next with Enter."
+                    : `Not exactly. Correct: ${questionData.answer}`
+            );
+            revealExampleText();
+        }
+
+        function renderChoice() {
+            const word = state.currentWord;
+            const questionData = getQuestionAndAnswer(word);
+            const answer = questionData.answer;
+            const options = createChoiceOptions(word, answer);
+
+            elements.exerciseRoot.innerHTML = `
+                <div class="exercise-card">
+                    <div class="question-area">
+                        <div class="question-meta">
+                            <span class="question-label">${escapeHtml(questionData.questionLabel)}</span>
+                            <span class="ui-badge">${escapeHtml(word.deck)}</span>
+                            ${getWordStatusBadge(word)}
+                        </div>
+                        <div class="question">${escapeHtml(questionData.question)}</div>
+                        <div class="choices-grid">
+                            ${options.map((option, index) => `
+                                <button class="choice-button" data-option-index="${index}" type="button">
+                                    <span class="choice-index">${index + 1}</span>
+                                    <span>${escapeHtml(option)}</span>
+                                </button>
+                            `).join("")}
+                        </div>
+                    </div>
+
+                    <div class="answer-zone">
+                        <div id="feedback" class="feedback"></div>
+                        ${getExampleRevealMarkup(word)}
+                        <div class="answer-actions">
+                            <button id="nextButton" class="ui-button ui-button-ghost" type="button">Next</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.querySelectorAll(".choice-button").forEach((button) => {
+                button.addEventListener("click", () => handleChoiceAnswer(Number(button.dataset.optionIndex), options, answer));
+            });
+
+            document.getElementById("nextButton").addEventListener("click", () => startRound());
+        }
+
+        function handleChoiceAnswer(optionIndex, options, correctAnswer) {
+            if (state.hasCurrentAnswerBeenChecked) {
+                return;
+            }
+
+            const selectedAnswer = options[optionIndex];
+            const isCorrect = selectedAnswer === correctAnswer;
+
+            state.hasCurrentAnswerBeenChecked = true;
+            markWord(state.currentWord.term, isCorrect);
+
+            document.querySelectorAll(".choice-button").forEach((button) => {
+                const option = options[Number(button.dataset.optionIndex)];
+
+                button.disabled = true;
+
+                if (option === correctAnswer) {
+                    button.classList.add("correct");
+                }
+
+                if (option === selectedAnswer && !isCorrect) {
+                    button.classList.add("wrong");
+                }
+            });
+
+            showFeedback(isCorrect, isCorrect ? "Correct." : `Correct: ${correctAnswer}`);
+            revealExampleText();
+        }
+
+        function createMatchingRound() {
+            const words = getRandomWords(getWordsForRound(), Math.min(6, getWordsForRound().length));
+
+            state.matchingWords = words.map((word) => ({
+                ...word,
+                isDone: false
+            }));
+            state.matchingRightWords = shuffle([...state.matchingWords]);
+        }
+
+        function renderMatching() {
+            if (!state.matchingWords.length) {
+                renderNoWordsState();
+                return;
+            }
+
+            elements.exerciseRoot.innerHTML = `
+                <div class="exercise-card">
+                    <div class="question-area">
+                        <div class="question-meta">
+                            <span class="question-label">Соедини английское выражение с переводом</span>
+                            <span class="ui-badge">${state.matchingWords.length} pairs</span>
+                        </div>
+
+                        <div class="match-grid">
+                            <div class="match-column">
+                                ${state.matchingWords.map((word) => `
+                                    <button
+                                        class="match-item ${word.isDone ? "done" : ""}"
+                                        data-side="left"
+                                        data-term="${escapeAttribute(word.term)}"
+                                        type="button"
+                                    >
+                                        ${escapeHtml(word.term)}
+                                    </button>
+                                `).join("")}
+                            </div>
+                            <div class="match-column">
+                                ${state.matchingRightWords.map((word) => `
+                                    <button
+                                        class="match-item ${word.isDone ? "done" : ""}"
+                                        data-side="right"
+                                        data-term="${escapeAttribute(word.term)}"
+                                        type="button"
+                                    >
+                                        ${escapeHtml(word.translation)}
+                                    </button>
+                                `).join("")}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="answer-zone">
+                        <div id="feedback" class="feedback"></div>
+                        <div class="answer-actions">
+                            <button id="newMatchingButton" class="ui-button ui-button-ghost" type="button">New round</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.querySelectorAll(".match-item").forEach((button) => {
+                button.addEventListener("click", () => handleMatchClick(button));
+            });
+
+            document.getElementById("newMatchingButton").addEventListener("click", () => {
+                createMatchingRound();
+                renderApp();
+            });
+        }
+
+        function handleMatchClick(button) {
+            if (button.classList.contains("done")) {
+                return;
+            }
+
+            const side = button.dataset.side;
+            const term = button.dataset.term;
+
+            document.querySelectorAll(`.match-item[data-side="${side}"]`).forEach((item) => {
+                item.classList.remove("selected");
+            });
+
+            button.classList.add("selected");
+
+            if (side === "left") {
+                state.selectedMatchLeft = term;
+            } else {
+                state.selectedMatchRight = term;
+            }
+
+            if (!state.selectedMatchLeft || !state.selectedMatchRight) {
+                return;
+            }
+
+            const isCorrect = state.selectedMatchLeft === state.selectedMatchRight;
+
+            if (isCorrect) {
+                state.matchingWords = state.matchingWords.map((word) => {
+                    return word.term === state.selectedMatchLeft
+                        ? { ...word, isDone: true }
+                        : word;
+                });
+                state.matchingRightWords = state.matchingRightWords.map((word) => {
+                    return word.term === state.selectedMatchLeft
+                        ? { ...word, isDone: true }
+                        : word;
+                });
+
+                markWord(state.selectedMatchLeft, true);
+                showFeedback(true, "Pair matched.");
+
+                state.selectedMatchLeft = null;
+                state.selectedMatchRight = null;
+
+                if (state.matchingWords.every((word) => word.isDone)) {
+                    setTimeout(() => {
+                        createMatchingRound();
+                        renderApp();
+                    }, 520);
+                    return;
+                }
+
+                renderApp();
+                return;
+            }
+
+            markWord(state.selectedMatchLeft, false);
+            showFeedback(false, "Wrong pair.");
+
+            setTimeout(() => {
+                state.selectedMatchLeft = null;
+                state.selectedMatchRight = null;
+
+                document.querySelectorAll(".match-item").forEach((item) => {
+                    item.classList.remove("selected");
+                });
+            }, 500);
+        }
+
+        function renderFlashcards() {
+            const word = state.currentWord;
+            const front = state.direction === "ruToEn" ? word.translation : word.term;
+            const back = state.direction === "ruToEn" ? word.term : word.translation;
+            const mainText = state.isFlashcardFlipped ? back : front;
+            const subText = state.isFlashcardFlipped
+                ? word.example || word.deck
+                : "Click or Space to flip";
+
+            elements.exerciseRoot.innerHTML = `
+                <div class="flashcard" id="flashcard">
+                    <div>
+                        <div class="question-meta" style="justify-content: center; margin-bottom: 18px;">
+                            <span class="ui-badge">${escapeHtml(word.deck)}</span>
+                            ${getWordStatusBadge(word)}
+                        </div>
+                        <div class="flashcard-main">${escapeHtml(mainText)}</div>
+                        <div class="flashcard-sub">${escapeHtml(subText)}</div>
+                    </div>
+                </div>
+
+                <div class="answer-actions">
+                    <button id="knowButton" class="ui-button ui-button-success" type="button">Know</button>
+                    <button id="doNotKnowButton" class="ui-button ui-button-danger" type="button">Do not know</button>
+                    <button id="nextButton" class="ui-button ui-button-ghost" type="button">Next</button>
+                </div>
+            `;
+
+            document.getElementById("flashcard").addEventListener("click", flipFlashcard);
+            document.getElementById("knowButton").addEventListener("click", () => {
+                markWord(word.term, true);
+                startRound();
+            });
+            document.getElementById("doNotKnowButton").addEventListener("click", () => {
+                markWord(word.term, false);
+                state.isFlashcardFlipped = true;
+                renderApp();
+            });
+            document.getElementById("nextButton").addEventListener("click", () => startRound());
+        }
+
+        function renderStats() {
+            const activeWords = getWordsForRound();
+            const allStats = getWordStats(state.words);
+            const totalAttempts = state.progress.correct + state.progress.wrong;
+            const accuracy = totalAttempts ? Math.round((state.progress.correct / totalAttempts) * 100) : 0;
+            const masteredCount = allStats.filter((item) => item.isMastered).length;
+            const weakCount = allStats.filter((item) => item.isWeak).length;
+
+            elements.activeWordsValue.textContent = activeWords.length;
+            elements.activeWordsHint.textContent = state.selectedDeck === ALL_DECKS_VALUE ? "по всем декам" : state.selectedDeck;
+            elements.deckCountValue.textContent = getDecks().length;
+            elements.attemptsValue.textContent = totalAttempts;
+            elements.accuracyValue.textContent = `${accuracy}%`;
+            elements.masteredValue.textContent = masteredCount;
+            elements.weakValue.textContent = weakCount;
+        }
+
+        function renderDeckGrid() {
+            const decks = getDecks();
+
+            elements.deckGrid.innerHTML = decks.map((deck) => {
+                const deckWords = state.words.filter((word) => word.deck === deck);
+                const stats = getWordStats(deckWords);
+                const attempts = stats.reduce((sum, item) => sum + item.attempts, 0);
+                const correct = stats.reduce((sum, item) => sum + item.correct, 0);
+                const accuracy = attempts ? Math.round((correct / attempts) * 100) : 0;
+                const mastered = stats.filter((item) => item.isMastered).length;
+                const isActive = state.selectedDeck === deck;
+                const progressPercent = deckWords.length ? Math.round((mastered / deckWords.length) * 100) : 0;
+
+                return `
+                    <button class="deck-button ${isActive ? "active" : ""}" data-deck="${escapeAttribute(deck)}" type="button">
+                        <span class="deck-button-title">
+                            <span>${escapeHtml(deck)}</span>
+                            <span class="ui-badge">${deckWords.length}</span>
+                        </span>
+                        <span class="mastery-line"><span class="mastery-fill" style="width: ${progressPercent}%"></span></span>
+                        <span class="deck-button-meta">
+                            <span>${accuracy}% accuracy</span>
+                            <span>${mastered} mastered</span>
+                        </span>
+                    </button>
+                `;
+            }).join("");
+
+            document.querySelectorAll(".deck-button").forEach((button) => {
+                button.addEventListener("click", () => {
+                    state.selectedDeck = button.dataset.deck;
+                    elements.deckSelect.value = state.selectedDeck;
+                    syncNewWordDeckInput();
+                    saveSettings();
+                    startRound();
+                });
+            });
+        }
+
+        function renderWordList() {
+            const query = normalizeAnswer(elements.searchInput.value);
+            const words = getWordsBeforeFocus()
+                .filter((word) => normalizeAnswer(`${word.term} ${word.translation} ${word.deck}`).includes(query))
+                .sort((firstWord, secondWord) => {
+                    return firstWord.deck.localeCompare(secondWord.deck, "en", { numeric: true })
+                        || firstWord.term.localeCompare(secondWord.term);
+                });
+
+            if (!words.length) {
+                elements.wordList.innerHTML = `<div class="empty-state">Ничего не найдено.</div>`;
+                return;
+            }
+
+            elements.wordList.innerHTML = words.map((word) => {
+                const stats = getSingleWordStats(word);
+                const isActive = state.currentWord && state.currentWord.term === word.term;
+                const isCustom = word.source === CUSTOM_WORD_SOURCE;
+
+                return `
+                    <article class="word-item ${isActive ? "active" : ""}">
+                        <button class="word-item-main" data-word-term="${escapeAttribute(word.term)}" type="button">
+                            <div class="word-item-title">
+                                <span>${escapeHtml(word.term)}</span>
+                                ${getWordStatusBadge(word)}
+                            </div>
+                            <div class="word-item-translation">${escapeHtml(word.translation)}</div>
+                        </button>
+                        <div class="word-item-footer">
+                            <span>${stats.attempts} attempts · ${stats.accuracy}%</span>
+                            <span class="word-actions">
+                                <span class="ui-badge">${escapeHtml(word.deck)}</span>
+                                ${isCustom ? `<button class="ui-button ui-button-danger ui-button-small" data-delete-term="${escapeAttribute(word.term)}" type="button">Delete</button>` : ""}
+                            </span>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+
+            document.querySelectorAll("[data-word-term]").forEach((button) => {
+                button.addEventListener("click", () => {
+                    const word = state.words.find((item) => item.term === button.dataset.wordTerm);
+
+                    if (!word) {
+                        return;
+                    }
+
+                    state.selectedDeck = word.deck;
+                    state.focus = "all";
+                    renderStaticControls();
+                    saveSettings();
+                    startRound(word);
+                });
+            });
+
+            document.querySelectorAll("[data-delete-term]").forEach((button) => {
+                button.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    deleteCustomWord(button.dataset.deleteTerm);
+                });
+            });
+        }
+
+        function renderInsights() {
+            const stats = getWordStats(getWordsBeforeFocus()).filter((item) => item.attempts > 0);
+            const weakestWords = [...stats]
+                .filter((item) => item.attempts > 0)
+                .sort((first, second) => {
+                    return first.masteryScore - second.masteryScore || second.attempts - first.attempts;
+                })
+                .slice(0, 8);
+
+            const bestWords = [...stats]
+                .filter((item) => item.attempts > 0)
+                .sort((first, second) => {
+                    return second.masteryScore - first.masteryScore || second.attempts - first.attempts;
+                })
+                .slice(0, 8);
+
+            elements.weakWordsList.innerHTML = renderInsightItems(weakestWords, "danger");
+            elements.bestWordsList.innerHTML = renderInsightItems(bestWords, "success");
+        }
+
+        function renderInsightItems(items, tone) {
+            if (!items.length) {
+                return `<div class="empty-state">Пока нет статистики. Ответь хотя бы несколько раз.</div>`;
+            }
+
+            return items.map((item) => `
+                <article class="insight-item">
+                    <div class="insight-top">
+                        <span class="insight-term">${escapeHtml(item.word.term)}</span>
+                        <span class="ui-badge ${tone === "success" ? "ui-badge-success" : "ui-badge-danger"}">${item.accuracy}%</span>
+                    </div>
+                    <div class="mastery-line">
+                        <div class="mastery-fill" style="width: ${item.accuracy}%"></div>
+                    </div>
+                    <div class="insight-meta">
+                        <span>✓ ${item.correct}</span>
+                        <span>✕ ${item.wrong}</span>
+                        <span>${escapeHtml(item.word.deck)}</span>
+                    </div>
+                </article>
+            `).join("");
+        }
+
+        function drawAccuracyChart() {
+            if (!elements.accuracyChart) {
+                return;
+            }
+
+            const canvas = elements.accuracyChart;
+            const container = canvas.parentElement;
+            const rect = container.getBoundingClientRect();
+
+            if (!rect.width || !rect.height) {
+                return;
+            }
+
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            canvas.width = Math.floor(rect.width * devicePixelRatio);
+            canvas.height = Math.floor(rect.height * devicePixelRatio);
+
+            const context = canvas.getContext("2d");
+            context.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+
+            const width = rect.width;
+            const height = rect.height;
+            const styles = getComputedStyle(document.documentElement);
+            const textColor = styles.getPropertyValue("--muted-strong").trim();
+            const mutedColor = styles.getPropertyValue("--muted").trim();
+            const gridColor = styles.getPropertyValue("--chart-grid").trim();
+            const axisColor = styles.getPropertyValue("--chart-axis").trim();
+            const dangerColor = styles.getPropertyValue("--danger").trim();
+            const successColor = styles.getPropertyValue("--success").trim();
+            const accentColor = styles.getPropertyValue("--accent").trim();
+
+            context.clearRect(0, 0, width, height);
+
+            const stats = getWordStats(getWordsBeforeFocus())
+                .filter((item) => item.attempts > 0)
+                .sort((first, second) => first.accuracy - second.accuracy || second.attempts - first.attempts)
+                .slice(0, 10);
+
+            if (!stats.length) {
+                context.fillStyle = mutedColor;
+                context.font = "13px " + getComputedStyle(document.body).fontFamily;
+                context.fillText("No attempts yet. Train a few words to build the chart.", 16, 34);
+                return;
+            }
+
+            const padding = {
+                top: 14,
+                right: 14,
+                bottom: 58,
+                left: 34
+            };
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+
+            context.strokeStyle = gridColor;
+            context.lineWidth = 1;
+
+            for (let tick = 0; tick <= 4; tick += 1) {
+                const y = padding.top + chartHeight - (chartHeight / 4) * tick;
+
+                context.beginPath();
+                context.moveTo(padding.left, y);
+                context.lineTo(width - padding.right, y);
+                context.stroke();
+
+                context.fillStyle = mutedColor;
+                context.font = "11px " + getComputedStyle(document.body).fontFamily;
+                context.textAlign = "right";
+                context.fillText(String(tick * 25), padding.left - 8, y + 4);
+            }
+
+            context.strokeStyle = axisColor;
+            context.beginPath();
+            context.moveTo(padding.left, padding.top);
+            context.lineTo(padding.left, padding.top + chartHeight);
+            context.lineTo(width - padding.right, padding.top + chartHeight);
+            context.stroke();
+
+            const gap = 8;
+            const barWidth = Math.max(12, (chartWidth - gap * (stats.length - 1)) / stats.length);
+
+            stats.forEach((item, index) => {
+                const x = padding.left + index * (barWidth + gap);
+                const barHeight = Math.max(2, chartHeight * (item.accuracy / 100));
+                const y = padding.top + chartHeight - barHeight;
+                const color = item.accuracy < 50
+                    ? dangerColor
+                    : item.accuracy >= 80
+                        ? successColor
+                        : accentColor;
+
+                context.fillStyle = color;
+                roundRect(context, x, y, barWidth, barHeight, 4);
+                context.fill();
+
+                context.fillStyle = textColor;
+                context.font = "11px " + getComputedStyle(document.body).fontFamily;
+                context.textAlign = "center";
+                context.fillText(`${item.accuracy}%`, x + barWidth / 2, y - 6);
+
+                context.save();
+                context.translate(x + barWidth / 2, padding.top + chartHeight + 12);
+                context.rotate(-Math.PI / 5);
+                context.fillStyle = mutedColor;
+                context.font = "11px " + getComputedStyle(document.body).fontFamily;
+                context.textAlign = "right";
+                context.fillText(truncateText(item.word.term, 14), 0, 0);
+                context.restore();
+            });
+        }
+
+        function roundRect(context, x, y, width, height, radius) {
+            const safeRadius = Math.min(radius, width / 2, height / 2);
+
+            context.beginPath();
+            context.moveTo(x + safeRadius, y);
+            context.arcTo(x + width, y, x + width, y + height, safeRadius);
+            context.arcTo(x + width, y + height, x, y + height, safeRadius);
+            context.arcTo(x, y + height, x, y, safeRadius);
+            context.arcTo(x, y, x + width, y, safeRadius);
+            context.closePath();
+        }
+
+        function getQuestionAndAnswer(word) {
+            const isRussianToEnglish = state.direction === "ruToEn";
+
+            return {
+                question: isRussianToEnglish ? word.translation : word.term,
+                answer: isRussianToEnglish ? word.term : word.translation,
+                questionLabel: isRussianToEnglish ? "Translate to English" : "Translate to Russian"
+            };
+        }
+
+        function createHint(answer) {
+            return answer
+                .split(" ")
+                .map((part) => {
+                    if (part.length <= 2) {
+                        return part[0] + "·".repeat(Math.max(part.length - 1, 0));
+                    }
+
+                    return part[0] + "·".repeat(part.length - 2) + part[part.length - 1];
+                })
+                .join(" ");
+        }
+
+        function createChoiceOptions(currentWord, correctAnswer) {
+            const activeWords = getWordsForRound();
+            const sourceWords = activeWords.length >= 4 ? activeWords : state.words;
+            const wrongOptions = getRandomWords(
+                sourceWords.filter((word) => word.term !== currentWord.term),
+                3
+            ).map((word) => {
+                return state.direction === "ruToEn" ? word.term : word.translation;
+            });
+
+            return shuffle([correctAnswer, ...wrongOptions]).slice(0, 4);
+        }
+
+        function getAcceptedAnswers(word, questionData) {
+            const answers = [questionData.answer];
+
+            if (state.direction === "ruToEn") {
+                answers.push(...(word.aliases || []));
+            }
+
+            return answers.flatMap(createAnswerVariants);
+        }
+
+        function createAnswerVariants(value) {
+            const rawValue = String(value);
+            const variants = new Set([rawValue]);
+
+            rawValue
+                .split(/\s[\/;]\s|;|,\s| или /i)
+                .map((item) => item.trim())
+                .filter(Boolean)
+                .forEach((item) => variants.add(item));
+
+            return [...variants];
+        }
+
+        function isAnswerCorrect(userAnswer, acceptedAnswers) {
+            const normalizedUserAnswer = normalizeAnswer(userAnswer);
+
+            if (!normalizedUserAnswer) {
+                return false;
+            }
+
+            return acceptedAnswers.some((answer) => normalizeAnswer(answer) === normalizedUserAnswer);
+        }
+
+        function getWordsBeforeFocus() {
+            if (state.selectedDeck === ALL_DECKS_VALUE) {
+                return state.words;
+            }
+
+            return state.words.filter((word) => word.deck === state.selectedDeck);
+        }
+
+        function getWordsForRound() {
+            const words = getWordsBeforeFocus();
+
+            if (state.focus === "new") {
+                return words.filter((word) => getSingleWordStats(word).attempts === 0);
+            }
+
+            if (state.focus === "weak") {
+                return words.filter((word) => getSingleWordStats(word).isWeak);
+            }
+
+            if (state.focus === "mastered") {
+                return words.filter((word) => getSingleWordStats(word).isMastered);
+            }
+
+            return words;
+        }
+
+        function getWeightedWord() {
+            const activeWords = getWordsForRound();
+
+            if (!activeWords.length) {
+                return null;
+            }
+
+            const weightedWords = activeWords.map((word) => {
+                const stats = getSingleWordStats(word);
+                const noveltyBonus = stats.attempts === 0 ? 1.2 : 0;
+                const weakBonus = stats.isWeak ? 2.1 : 0;
+                const mistakePressure = stats.wrong * 1.45;
+                const masteryPenalty = stats.correct * 0.26;
+                const weight = Math.max(0.35, 1 + noveltyBonus + weakBonus + mistakePressure - masteryPenalty);
+
+                return {
+                    word,
+                    weight
+                };
+            });
+
+            const totalWeight = weightedWords.reduce((sum, item) => sum + item.weight, 0);
+            let randomValue = Math.random() * totalWeight;
+
+            for (const item of weightedWords) {
+                randomValue -= item.weight;
+
+                if (randomValue <= 0) {
+                    if (state.currentWord && activeWords.length > 1 && item.word.term === state.currentWord.term) {
+                        return activeWords.find((word) => word.term !== state.currentWord.term) || item.word;
+                    }
+
+                    return item.word;
+                }
+            }
+
+            return weightedWords[0].word;
+        }
+
+        function getWordStats(words) {
+            return words.map(getSingleWordStats);
+        }
+
+        function getSingleWordStats(word) {
+            const progress = getWordProgress(word.term);
+            const correct = Number(progress.correct) || 0;
+            const wrong = Number(progress.wrong) || 0;
+            const attempts = correct + wrong;
+            const accuracy = attempts ? Math.round((correct / attempts) * 100) : 0;
+            const isMastered = attempts >= 3 && accuracy >= 80;
+            const isWeak = attempts > 0 && (wrong >= 2 || accuracy < 60);
+            const masteryScore = attempts === 0
+                ? 0
+                : accuracy + Math.min(20, attempts * 3) - wrong * 5;
+
+            return {
+                word,
+                correct,
+                wrong,
+                attempts,
+                accuracy,
+                isMastered,
+                isWeak,
+                masteryScore
+            };
+        }
+
+        function getWordStatusBadge(word) {
+            const stats = getSingleWordStats(word);
+
+            if (stats.isMastered) {
+                return `<span class="ui-badge ui-badge-success">mastered</span>`;
+            }
+
+            if (stats.isWeak) {
+                return `<span class="ui-badge ui-badge-danger">weak</span>`;
+            }
+
+            if (!stats.attempts) {
+                return `<span class="ui-badge ui-badge-warning">new</span>`;
+            }
+
+            return `<span class="ui-badge">${stats.accuracy}%</span>`;
+        }
+
+        function markWord(term, isCorrect) {
+            if (!state.progress.words[term]) {
+                state.progress.words[term] = {
+                    correct: 0,
+                    wrong: 0,
+                    streak: 0,
+                    updatedAt: null
+                };
+            }
+
+            const progress = state.progress.words[term];
+
+            if (isCorrect) {
+                state.progress.correct += 1;
+                progress.correct = (Number(progress.correct) || 0) + 1;
+                progress.streak = Math.max(0, Number(progress.streak) || 0) + 1;
+            } else {
+                state.progress.wrong += 1;
+                progress.wrong = (Number(progress.wrong) || 0) + 1;
+                progress.streak = Math.min(0, Number(progress.streak) || 0) - 1;
+            }
+
+            progress.updatedAt = new Date().toISOString();
+
+            saveProgress();
+            renderStats();
+            renderWordList();
+            renderInsights();
+            drawAccuracyChart();
+        }
+
+        function getWordProgress(term) {
+            return state.progress.words[term] || {
+                correct: 0,
+                wrong: 0,
+                streak: 0,
+                updatedAt: null
+            };
+        }
+
+        function normalizeStoredWord(word, source) {
+            if (!word || typeof word !== "object") {
+                return null;
+            }
+
+            const term = cleanText(word.term);
+            const translation = cleanText(word.translation);
+
+            if (!term || !translation) {
+                return null;
+            }
+
+            return {
+                term,
+                translation,
+                example: cleanText(word.example),
+                deck: cleanText(word.deck) || DEFAULT_CUSTOM_DECK,
+                aliases: Array.isArray(word.aliases)
+                    ? word.aliases.map(cleanText).filter(Boolean)
+                    : [],
+                source
+            };
+        }
+
+        function loadCustomWords() {
+            try {
+                const savedWords = JSON.parse(localStorage.getItem(STORAGE_KEYS.customWords));
+
+                if (!Array.isArray(savedWords)) {
+                    return [];
+                }
+
+                return savedWords
+                    .map((word) => normalizeStoredWord(word, CUSTOM_WORD_SOURCE))
+                    .filter(Boolean);
+            } catch {
+                return [];
+            }
+        }
+
+        function saveCustomWords() {
+            const customWords = state.words
+                .filter((word) => word.source === CUSTOM_WORD_SOURCE)
+                .map((word) => ({
+                    term: word.term,
+                    translation: word.translation,
+                    example: word.example,
+                    deck: word.deck,
+                    aliases: word.aliases || []
+                }));
+
+            localStorage.setItem(STORAGE_KEYS.customWords, JSON.stringify(customWords));
+        }
+
+        function addWordFromForm() {
+            const word = normalizeStoredWord({
+                term: elements.newTermInput.value,
+                translation: elements.newTranslationInput.value,
+                example: elements.newExampleInput.value,
+                deck: elements.newDeckInput.value || DEFAULT_CUSTOM_DECK,
+                aliases: parseAliases(elements.newAliasesInput.value)
+            }, CUSTOM_WORD_SOURCE);
+
+            if (!word) {
+                showAddWordStatus("danger", "Нужно минимум English word / phrase и перевод.");
+                return;
+            }
+
+            const result = upsertCustomWord(word);
+
+            if (!result.ok) {
+                showAddWordStatus("danger", result.message);
+                return;
+            }
+
+            state.selectedDeck = result.word.deck;
+            rememberAddWordDeck(result.word.deck);
+            state.focus = "all";
+            renderStaticControls();
+            clearWordForm({ keepDeck: true });
+            saveSettings();
+            startRound(result.word);
+            showAddWordStatus("success", result.message);
+        }
+
+        function upsertCustomWord(word) {
+            const normalizedTerm = normalizeAnswer(word.term);
+            const builtInWord = state.words.find((item) => {
+                return item.source !== CUSTOM_WORD_SOURCE && normalizeAnswer(item.term) === normalizedTerm;
+            });
+
+            if (builtInWord) {
+                return {
+                    ok: false,
+                    message: `Такое слово уже есть в базе: ${builtInWord.deck}`
+                };
+            }
+
+            const existingCustomIndex = state.words.findIndex((item) => {
+                return item.source === CUSTOM_WORD_SOURCE && normalizeAnswer(item.term) === normalizedTerm;
+            });
+
+            if (existingCustomIndex === -1) {
+                state.words.push(word);
+                saveCustomWords();
+
+                return {
+                    ok: true,
+                    word,
+                    message: `Добавил: ${word.term}`
+                };
+            }
+
+            state.words[existingCustomIndex] = {
+                ...state.words[existingCustomIndex],
+                ...word
+            };
+            saveCustomWords();
+
+            return {
+                ok: true,
+                word: state.words[existingCustomIndex],
+                message: `Обновил: ${word.term}`
+            };
+        }
+
+        function importBulkWords() {
+            const lines = elements.bulkImportInput.value
+                .split(/\r?\n/)
+                .map((line) => line.trim())
+                .filter(Boolean);
+
+            if (!lines.length) {
+                showAddWordStatus("danger", "Вставь хотя бы одну строку для импорта.");
+                return;
+            }
+
+            const fallbackDeck = cleanText(elements.newDeckInput.value) || DEFAULT_CUSTOM_DECK;
+            let addedCount = 0;
+            let updatedCount = 0;
+            let skippedCount = 0;
+            let firstImportedWord = null;
+
+            for (const line of lines) {
+                const parsedWord = parseBulkLine(line, fallbackDeck);
+
+                if (!parsedWord) {
+                    skippedCount += 1;
+                    continue;
+                }
+
+                const hadWordBefore = state.words.some((word) => {
+                    return word.source === CUSTOM_WORD_SOURCE
+                        && normalizeAnswer(word.term) === normalizeAnswer(parsedWord.term);
+                });
+                const result = upsertCustomWord(parsedWord);
+
+                if (!result.ok) {
+                    skippedCount += 1;
+                    continue;
+                }
+
+                if (!firstImportedWord) {
+                    firstImportedWord = result.word;
+                }
+
+                if (hadWordBefore) {
+                    updatedCount += 1;
+                } else {
+                    addedCount += 1;
+                }
+            }
+
+            if (!firstImportedWord) {
+                showAddWordStatus("danger", `Не импортировал. Пропущено строк: ${skippedCount}.`);
+                return;
+            }
+
+            elements.bulkImportInput.value = "";
+            state.selectedDeck = firstImportedWord.deck;
+            rememberAddWordDeck(firstImportedWord.deck);
+            state.focus = "all";
+            renderStaticControls();
+            saveSettings();
+            startRound(firstImportedWord);
+            showAddWordStatus("success", `Готово: +${addedCount}, обновлено: ${updatedCount}, пропущено: ${skippedCount}.`);
+        }
+
+        function parseBulkLine(line, fallbackDeck) {
+            let parts = line.split("|").map(cleanText);
+
+            if (parts.length < 2) {
+                parts = line.split("\t").map(cleanText);
+            }
+
+            if (parts.length < 2) {
+                parts = line.split(/\s+—\s+|\s+-\s+/).map(cleanText);
+            }
+
+            const [term, translation, deck, example, aliases] = parts;
+
+            return normalizeStoredWord({
+                term,
+                translation,
+                deck: deck || fallbackDeck,
+                example: example || "",
+                aliases: parseAliases(aliases || "")
+            }, CUSTOM_WORD_SOURCE);
+        }
+
+        function deleteCustomWord(term) {
+            const wordIndex = state.words.findIndex((word) => {
+                return word.source === CUSTOM_WORD_SOURCE && word.term === term;
+            });
+
+            if (wordIndex === -1) {
+                return;
+            }
+
+            const [deletedWord] = state.words.splice(wordIndex, 1);
+            delete state.progress.words[deletedWord.term];
+
+            saveCustomWords();
+            saveProgress();
+
+            if (!getDecks().includes(state.selectedDeck)) {
+                state.selectedDeck = ALL_DECKS_VALUE;
+            }
+
+            renderStaticControls();
+            startRound();
+        }
+
+        function clearWordForm(options = {}) {
+            elements.newTermInput.value = "";
+            elements.newTranslationInput.value = "";
+            elements.newAliasesInput.value = "";
+            elements.newExampleInput.value = "";
+
+            if (!options.keepDeck) {
+                syncNewWordDeckInput();
+            }
+
+            elements.newTermInput.focus();
+        }
+
+        function showAddWordStatus(type, message) {
+            elements.addWordStatus.className = `status-text ${type || ""}`;
+            elements.addWordStatus.textContent = message;
+        }
+
+        function openAddWordModal() {
+            elements.addWordModal.classList.add("open");
+            syncNewWordDeckInput();
+            setTimeout(() => elements.newTermInput.focus(), 0);
+        }
+
+        function closeAddWordModal() {
+            rememberAddWordDeck(elements.newDeckInput.value);
+            saveSettings();
+            elements.addWordModal.classList.remove("open");
+        }
+
+        function syncNewWordDeckInput() {
+            elements.newDeckInput.value = getPreferredAddWordDeck();
+        }
+
+        function getPreferredAddWordDeck() {
+            const rememberedDeck = cleanText(state.addWordDeck);
+
+            if (rememberedDeck) {
+                return rememberedDeck;
+            }
+
+            return state.selectedDeck === ALL_DECKS_VALUE
+                ? DEFAULT_CUSTOM_DECK
+                : state.selectedDeck;
+        }
+
+        function rememberAddWordDeck(value) {
+            state.addWordDeck = cleanText(value) || getPreferredAddWordDeck();
+        }
+
+        function exportData() {
+            const payload = {
+                version: 1,
+                exportedAt: new Date().toISOString(),
+                customWords: state.words.filter((word) => word.source === CUSTOM_WORD_SOURCE),
+                progress: state.progress,
+                settings: {
+                    mode: state.mode,
+                    selectedDeck: state.selectedDeck,
+                    addWordDeck: getPreferredAddWordDeck(),
+                    direction: state.direction,
+                    focus: state.focus,
+                    theme: state.theme
+                }
+            };
+            const blob = new Blob([JSON.stringify(payload, null, 4)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+
+            link.href = url;
+            link.download = "words-trainer-backup.json";
+            link.click();
+
+            URL.revokeObjectURL(url);
+        }
+
+        function importData(event) {
+            const file = event.target.files && event.target.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                try {
+                    const payload = JSON.parse(String(reader.result || "{}"));
+
+                    if (Array.isArray(payload.customWords)) {
+                        const customWords = payload.customWords
+                            .map((word) => normalizeStoredWord(word, CUSTOM_WORD_SOURCE))
+                            .filter(Boolean);
+
+                        const baseWords = state.words.filter((word) => word.source !== CUSTOM_WORD_SOURCE);
+                        state.words = [...baseWords, ...customWords];
+                        saveCustomWords();
+                    }
+
+                    if (payload.progress && typeof payload.progress === "object") {
+                        state.progress = {
+                            ...createEmptyProgress(),
+                            ...payload.progress,
+                            words: payload.progress.words || {}
+                        };
+                        saveProgress();
+                    }
+
+                    if (payload.settings && typeof payload.settings === "object") {
+                        if (payload.settings.theme === "light" || payload.settings.theme === "dark") {
+                            state.theme = payload.settings.theme;
+                            applyTheme();
+                        }
+
+                        if (payload.settings.mode && MODES[payload.settings.mode]) {
+                            state.mode = payload.settings.mode;
+                        }
+
+                        if (payload.settings.direction === "ruToEn" || payload.settings.direction === "enToRu") {
+                            state.direction = payload.settings.direction;
+                        }
+
+                        if (payload.settings.focus && ["all", "new", "weak", "mastered"].includes(payload.settings.focus)) {
+                            state.focus = payload.settings.focus;
+                        }
+
+                        if (payload.settings.selectedDeck === ALL_DECKS_VALUE || getDecks().includes(payload.settings.selectedDeck)) {
+                            state.selectedDeck = payload.settings.selectedDeck;
+                        }
+
+                        if (cleanText(payload.settings.addWordDeck)) {
+                            state.addWordDeck = cleanText(payload.settings.addWordDeck);
+                        }
+
+                        saveSettings();
+                    }
+
+                    renderStaticControls();
+                    startRound();
+                    alert("Import complete.");
+                } catch {
+                    alert("Не удалось импортировать JSON.");
+                } finally {
+                    elements.importInput.value = "";
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+        function handleGlobalKeydown(event) {
+            const activeElement = document.activeElement;
+            const isTyping = activeElement && ["INPUT", "TEXTAREA", "SELECT"].includes(activeElement.tagName);
+            const normalizedKey = String(event.key || "").toLowerCase();
+
+            if (event.key === "Escape" && elements.addWordModal.classList.contains("open")) {
+                closeAddWordModal();
+                return;
+            }
+
+            if (isTyping) {
+                return;
+            }
+
+            if (
+                (!event.ctrlKey && !event.altKey && !event.metaKey && !event.shiftKey && event.key === "/")
+                || (event.ctrlKey && !event.altKey && !event.metaKey && ["k", "л"].includes(normalizedKey))
+            ) {
+                event.preventDefault();
+                openAddWordModal();
+                return;
+            }
+
+            if (event.altKey && /^[1-5]$/.test(event.key)) {
+                event.preventDefault();
+                const modes = Object.keys(MODES);
+                setMode(modes[Number(event.key) - 1]);
+                return;
+            }
+
+            if ((event.ctrlKey && event.key === "Enter") || event.key === "n" || event.key === "N" || event.key === "ArrowRight") {
+                event.preventDefault();
+                startRound();
+                return;
+            }
+
+            if (state.mode === "choice" && /^[1-4]$/.test(event.key)) {
+                const button = document.querySelector(`.choice-button[data-option-index="${Number(event.key) - 1}"]`);
+
+                if (button) {
+                    event.preventDefault();
+                    button.click();
+                }
+
+                return;
+            }
+
+            if (state.mode === "flashcards") {
+                if (event.key === " ") {
+                    event.preventDefault();
+                    flipFlashcard();
+                    return;
+                }
+
+                if (event.key === "k" || event.key === "K") {
+                    event.preventDefault();
+                    markWord(state.currentWord.term, true);
+                    startRound();
+                    return;
+                }
+
+                if (event.key === "d" || event.key === "D") {
+                    event.preventDefault();
+                    markWord(state.currentWord.term, false);
+                    state.isFlashcardFlipped = true;
+                    renderApp();
+                }
+            }
+        }
+
+        function flipFlashcard() {
+            state.isFlashcardFlipped = !state.isFlashcardFlipped;
+            renderApp();
+        }
+
+        function showFeedback(isSuccess, message) {
+            const feedback = document.getElementById("feedback");
+
+            if (!feedback) {
+                return;
+            }
+
+            feedback.className = `feedback ${isSuccess ? "success" : "danger"}`;
+            feedback.textContent = message;
+        }
+
+        function getDecks() {
+            return [...new Set(state.words.map((word) => word.deck))]
+                .sort((firstDeck, secondDeck) => firstDeck.localeCompare(secondDeck, "en", { numeric: true }));
+        }
+
+        function getRandomWords(sourceWords, count) {
+            return shuffle([...sourceWords]).slice(0, count);
+        }
+
+        function shuffle(items) {
+            const result = [...items];
+
+            for (let i = result.length - 1; i > 0; i -= 1) {
+                const randomIndex = Math.floor(Math.random() * (i + 1));
+                const item = result[i];
+
+                result[i] = result[randomIndex];
+                result[randomIndex] = item;
+            }
+
+            return result;
+        }
+
+        function normalizeAnswer(value) {
+            return String(value)
+                .toLowerCase()
+                .replace(/i['’]?m/g, "i am")
+                .replace(/we['’]?d/g, "we would")
+                .replace(/don['’]?t/g, "do not")
+                .replace(/[’']/g, "")
+                .replace(/[^a-zа-яёієїґ0-9%]+/gi, " ")
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+
+        function parseAliases(value) {
+            return String(value || "")
+                .split(/[,;|]/)
+                .map(cleanText)
+                .filter(Boolean);
+        }
+
+        function cleanText(value) {
+            return String(value || "").replace(/\s+/g, " ").trim();
+        }
+
+        function truncateText(value, maxLength) {
+            const text = String(value);
+
+            return text.length > maxLength
+                ? `${text.slice(0, maxLength - 1)}…`
+                : text;
+        }
+
+        function debounce(callback, delay) {
+            let timerId = 0;
+
+            return (...args) => {
+                window.clearTimeout(timerId);
+                timerId = window.setTimeout(() => callback(...args), delay);
+            };
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function escapeAttribute(value) {
+            return escapeHtml(value).replace(/`/g, "&#096;");
+        }
+    </script>
+</body>
+</html>
